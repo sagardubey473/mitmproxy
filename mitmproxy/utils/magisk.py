@@ -87,7 +87,7 @@ def get_ca_from_files() -> x509.Certificate:
 
 def subject_hash_old(ca: x509.Certificate) -> str:
     # Mimics the -subject_hash_old option of openssl used for android certificate names
-    full_hash = hashlib.md5(ca.subject.public_bytes()).digest()
+    full_hash = hashlib.sha256(ca.subject.public_bytes()).digest()
     sho = full_hash[0] | (full_hash[1] << 8) | (full_hash[2] << 16) | full_hash[3] << 24
     return hex(sho)[2:]
 
