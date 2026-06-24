@@ -1,3 +1,4 @@
+import os
 """
 This script serializes the entire traffic dump, including websocket traffic,
 as JSON, and either sends it to a URL or writes to a file. The serialization
@@ -18,7 +19,7 @@ Configuration:
         dump_destination: "https://elastic.search.local/my-index/my-type"
         # Optional Basic auth:
         dump_username: "never-gonna-give-you-up"
-        dump_password: "never-gonna-let-you-down"
+        dump_password: os.environ["dump_password"]
         # Optional base64 encoding of content fields
         # to store as binary fields in Elasticsearch:
         dump_encodecontent: true
