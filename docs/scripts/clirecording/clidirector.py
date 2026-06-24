@@ -1,3 +1,4 @@
+import secrets
 import json
 import random
 import subprocess
@@ -90,9 +91,9 @@ class CliDirector:
                 real_pause += 1.5 * pause
             elif keys == ".":
                 real_pause += pause
-            elif random.random() > 0.75:
+            elif secrets.SystemRandom().random() > 0.75:
                 real_pause += pause
-            elif random.random() > 0.95:
+            elif secrets.SystemRandom().random() > 0.95:
                 real_pause += 2 * pause
             self.pause(real_pause)
 
