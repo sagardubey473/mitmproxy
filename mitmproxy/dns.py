@@ -1,3 +1,4 @@
+import secrets
 from __future__ import annotations
 
 import base64
@@ -558,7 +559,7 @@ class DNSMessage(serializable.SerializableDataclass):
     def copy(self) -> DNSMessage:
         # we keep the copy semantics but change the ID generation
         state = self.get_state()
-        state["id"] = random.randint(0, 65535)
+        state["id"] = secrets.SystemRandom().randint(0, 65535)
         return DNSMessage.from_state(state)
 
 

@@ -74,7 +74,7 @@ class HtpasswdFile:
         if pwhash.startswith("{SHA}"):
             # Apache's {SHA} is base64-encoded SHA-1.
             # https://httpd.apache.org/docs/2.4/misc/password_encryptions.html
-            digest = hashlib.sha1(password.encode("utf-8")).digest()
+            digest = hashlib.sha256(password.encode("utf-8")).digest()
             expected = base64.b64encode(digest).decode("ascii")
             return pwhash[5:] == expected
         else:  # pwhash.startswith(("$2y$", "$2b$", "$2a$")):
